@@ -12,4 +12,8 @@ export default class BankingService {
   public getTrnxsByAccountId(accountId: number): AxiosPromise<any> {
     return axios.get('/api/transactions/account/' + accountId);
   }
+
+  public getAccountsApiVersion(): AxiosPromise<any> {
+    return axios.get('/api/accounts/version');
+  }
 }

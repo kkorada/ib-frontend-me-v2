@@ -62,6 +62,22 @@ public class BankingController {
 				});
 		return result;
 	}
+
+	@GetMapping("/accounts/version")
+	public ResponseEntity<String> getAccountsApiVersion() throws URISyntaxException {
+		log.debug("REST request to get accounts api version");
+
+		RestTemplate restTemplate = new RestTemplate();
+	     
+	    final String baseUrl = "http://" + accountServiceHost + "/api/version";
+	    URI uri = new URI(baseUrl);
+	 
+	    ResponseEntity<String> result = restTemplate.getForEntity(uri, String.class);
+	    // ResponseEntity<List<BankingAccountDTO>> result = restTemplate.exchange(uri, HttpMethod.GET, null,
+		// 		new ParameterizedTypeReference<List<BankingAccountDTO>>() {
+		// 		});
+		return result;
+	}
 	
 	@GetMapping("/transactions/account/{accountId}")
 	public ResponseEntity<List<TransactionDTO>> getTransactionsByAccount(@PathVariable String accountId) throws URISyntaxException {

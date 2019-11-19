@@ -33,7 +33,7 @@
                                         </div>
                                     </div>                                    
                                 </div>
-                                <div class="ad-banner">
+                                <div class="ad-banner" v-if="accountsApiVersion === 'v2'">
                                     <div class="row align-items-center">
                                         <div class="col-md-2 text-center">
                                             <font-awesome-icon icon="credit-card" style="font-size: 45px; color: #db7859"></font-awesome-icon>

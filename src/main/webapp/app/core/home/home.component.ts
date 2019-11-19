@@ -40,6 +40,8 @@ export default class Home extends Vue {
   public currentSelectedAccount: number = null;
 
   public transactions: any = {};
+
+  public accountsApiVersion = '';
   // {
   //   '07-11-2019': [
   //     {
@@ -73,6 +75,10 @@ export default class Home extends Vue {
 
   mounted() {
     const login = this.$store.getters.account.login;
+    this.bankingService().getAccountsApiVersion().then(res => {
+      this.accountsApiVersion = res.data;
+      console.log(res.data);
+    });
     this.bankingService()
       .getCustomerByLogin(login)
       .then(res => {
